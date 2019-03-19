@@ -2,7 +2,7 @@ import Header from './header'
 import Head from 'next/head'
 
 const layoutStyle = {
-  fontFamily: 'sans-serif',
+  fontFamily: '"Nunito Sans", sans-serif',
   color: '#343434'
 }
 
@@ -11,15 +11,9 @@ const Layout = props => (
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta charSet="utf-8" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
+      <link href="https://fonts.googleapis.com/css?family=Baloo+Thambi|Chivo|Nunito+Sans" rel="stylesheet" />
     </Head>
-    <style jsx global>{`
-      body { 
-        margin: 0;
-        font-family: sans-serif;
-        color: #343434;
-        background-color: #e4dfda;
-      }
-    `}</style>
     <Header />
     {props.children}
   </div>

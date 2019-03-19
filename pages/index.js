@@ -1,14 +1,30 @@
 import Layout from '../components/notesAppLayout'
 import Note from '../components/note'
 import fetch from 'isomorphic-unfetch'
+import { Container, Row } from 'reactstrap'
+
+const notesContainerStyle = {
+  backgroundColor: 'none',
+  marginTop: 32
+}
 
 const Index = (props) => (
   <Layout>
-    <div>
-      {props.notes.map((note) => (
-        <Note key={note.id} note={note} />
-      ))}
-    </div>
+    <Container style={notesContainerStyle}>
+      <Row>
+        {props.notes.map((note) => (
+          <Note key={note.id} note={note} />
+        ))}
+      </Row>
+    </Container>
+    <style jsx global>{`
+      body { 
+        margin: 0;
+        font-family: "Nunito Sans", sans-serif;
+        color: #343434;
+        background-color: #e4dfda;
+      }
+    `}</style>
   </Layout>
 )
 
