@@ -1,17 +1,14 @@
-import Link from 'next/link'
-
-const linkStyle = {
-  marginRight: 15
+const headerStyle = {
+  backgroundColor: '#425bd7',
+  color: '#fff',
+  fontSize: '24px',
+  boxShadow: '0px 4px 16px #aaa',
+  padding: 16
 }
 
 const Header = () => (
-  <div>
-    <Link href="/">
-      <a style={linkStyle}>Home</a>
-    </Link>
-    <Link href="/about">
-      <a style={linkStyle}>About</a>
-    </Link>
+  <div style={headerStyle}>
+    <div>Quadminds Notes Test</div>
   </div>
 )
 
