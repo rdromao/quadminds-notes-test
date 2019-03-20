@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/rdromao/quadminds-notes-test#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^8.0.3",

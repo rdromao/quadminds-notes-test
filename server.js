@@ -1,4 +1,5 @@
 const express = require('express')
+var bodyParser = require('body-parser')
 const next = require('next')
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
@@ -11,6 +12,9 @@ app
   .then(() => {
     const server = express()
 
+    server.use(bodyParser.urlencoded({ extended: true }))
+    server.use(bodyParser.json())
+
     server.get('/notes', (req, res, next) => {
         db.any('SELECT * from note')
         .then(function (data) {
@@ -21,11 +25,17 @@ app
         })
     })
 
-    server.get('/p/:id', (req, res) => {
-        const actualPage = '/post'
-        const queryParams = { id: req.params.id }
-        app.render(req, res, actualPage, queryParams)
-    })
+    server.post('/notes', (req, res, next) => {
+      db.none('INSERT INTO note(title,content) VALUES($1, $2)', [req.body.title, req.body.content])
+      .then(function () {
+        console.log("New note inserted succesfully")
+        res.sendStatus(200)
+      })
+      .catch(function (error) {
+        console.log("New note insertion error")
+        console.error(error)
+      })
+  })
 
     server.get('*', (req, res) => {
       return handle(req, res)

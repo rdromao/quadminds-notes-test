@@ -1,11 +1,12 @@
-import { Card, CardBody, CardTitle, CardText, Button } from 'reactstrap'
+import { Card, CardBody, CardTitle, CardText, CardLink } from 'reactstrap'
 
 const Note = (props) => (
     <Card>
         <CardBody>
-            <CardTitle>{props.note.title}</CardTitle>
+            <CardTitle style={{fontWeight: 700}}>{props.note.title}</CardTitle>
             <CardText>{props.note.content}</CardText>
-            <Button>Button</Button>
+            <CardLink href="#">Delete</CardLink>
+            <CardLink href="#">Edit</CardLink>
         </CardBody>
     </Card>
 )
