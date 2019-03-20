@@ -13,8 +13,19 @@ class Index extends React.Component {
         super(props);
         this.state = {notes: [], loadingNotes: true}
         this.getNotesList = this.getNotesList.bind(this)
+        this.deleteNote = this.deleteNote.bind(this)
     }
   componentWillMount() {
+    this.getNotesList()
+  }
+  async deleteNote(noteToDeleteId) {
+    await fetch('http://localhost:3000/notes/'+noteToDeleteId, {
+            method: 'DELETE',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            }
+        })
     this.getNotesList()
   }
   async getNotesList() {
@@ -31,8 +42,12 @@ class Index extends React.Component {
             <CardColumns>
               <NewNote getNotesList={this.getNotesList}/>
               {this.state.loadingNotes ? <Spinner type="grow" color="dark" />:
-                this.state.notes.map((note) => (
-                    <Note key={note.id} note={note} />
+                this.state.notes.concat().sort((a,b) => a.id - b.id).map((note) => (
+                    <Note
+                      key={note.id}
+                      note={note}
+                      deleteNote={this.deleteNote}
+                      getNotesList={this.getNotesList}/>
                 ))
               }
             </CardColumns>

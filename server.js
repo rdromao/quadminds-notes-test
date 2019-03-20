@@ -35,7 +35,31 @@ app
         console.log("New note insertion error")
         console.error(error)
       })
-  })
+    })
+
+    server.put('/notes/:id', (req, res, next) => {
+      db.none('Update note set title = $2, content = $3 where id = $1;', [req.params.id, req.body.title, req.body.content])
+      .then(function () {
+        console.log("Note edited succesfully")
+        res.sendStatus(200)
+      })
+      .catch(function (error) {
+        console.log("Note edition error")
+        console.error(error)
+      })
+    })
+
+    server.delete('/notes/:id', (req, res, next) => {
+      db.none('DELETE FROM note where id = $1;', [req.params.id])
+      .then(function () {
+        console.log("Note deleted succesfully")
+        res.sendStatus(200)
+      })
+      .catch(function (error) {
+        console.log("Note deletion error")
+        console.error(error)
+      })
+    })
 
     server.get('*', (req, res) => {
       return handle(req, res)

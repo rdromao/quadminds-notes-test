@@ -35,6 +35,9 @@ class NewNote extends React.Component {
     }
 
     render(){
+
+        let enableSaveButton = (this.state.newNoteTitle && 0 !== this.state.newNoteTitle.length) || (this.state.newNoteContent && 0 !== this.state.newNoteContent.length);
+
         return (
             <Card>
                 <CardBody>
@@ -49,7 +52,7 @@ class NewNote extends React.Component {
                         <Input type="textarea" name="newNoteContent" id="newNoteContent" onChange={this.handleContentChange} value={this.state.newNoteContent}/>
                     </FormGroup>
                     </Form>
-                    <Button onClick={this.handleNewNoteSave} href="#">Save</Button>
+                    <Button disabled={!enableSaveButton} onClick={this.handleNewNoteSave} href="#">Save</Button>
                 </CardBody>
             </Card>
         )
