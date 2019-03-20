@@ -50,7 +50,7 @@ class Note extends React.Component {
                 <CardBody>
                     <CardTitle style={{fontWeight: 700}}>{this.props.note.title}</CardTitle>
                     <CardText>{this.props.note.content}</CardText>
-                    <CardLink onClick={() => props.deleteNote(this.props.note.id)} href="#">Delete</CardLink>
+                    <CardLink onClick={() => this.props.deleteNote(this.props.note.id)} href="#">Delete</CardLink>
                     <CardLink onClick={this.toggleModal} href="#">Edit</CardLink>
                     <Modal isOpen={this.state.isEditModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Edit note</ModalHeader>
