@@ -16,7 +16,7 @@ app
     server.use(bodyParser.json())
 
     server.get('/notes', (req, res, next) => {
-        db.any('SELECT * from note')
+        db.any('SELECT * from note;')
         .then(function (data) {
           res.json(data);
         })
@@ -26,7 +26,7 @@ app
     })
 
     server.post('/notes', (req, res, next) => {
-      db.none('INSERT INTO note(title,content) VALUES($1, $2)', [req.body.title, req.body.content])
+      db.none('INSERT INTO note(title,content) VALUES($1, $2);', [req.body.title, req.body.content])
       .then(function () {
         console.log("New note inserted succesfully")
         res.sendStatus(200)

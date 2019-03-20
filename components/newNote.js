@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-unfetch'
-import { Card, CardBody, CardTitle, CardLink, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Card, CardBody, CardTitle, Button, Form, FormGroup, Label, Input } from 'reactstrap'
 
 class NewNote extends React.Component {
     constructor(props) {
@@ -18,8 +18,8 @@ class NewNote extends React.Component {
         this.setState({newNoteContent: e.target.value});
     }
 
-    handleNewNoteSave(){
-        fetch('http://localhost:3000/notes', {
+    async handleNewNoteSave(){
+        await fetch('http://localhost:3000/notes', {
             method: 'POST',
             headers: {
             'Accept': 'application/json',
@@ -31,6 +31,7 @@ class NewNote extends React.Component {
             newNoteTitle: '',
             newNoteContent: ''
         });
+        this.props.getNotesList()
     }
 
     render(){
@@ -48,7 +49,7 @@ class NewNote extends React.Component {
                         <Input type="textarea" name="newNoteContent" id="newNoteContent" onChange={this.handleContentChange} value={this.state.newNoteContent}/>
                     </FormGroup>
                     </Form>
-                    <CardLink onClick={this.handleNewNoteSave} href="#">Save</CardLink>
+                    <Button onClick={this.handleNewNoteSave} href="#">Save</Button>
                 </CardBody>
             </Card>
         )
