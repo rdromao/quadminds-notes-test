@@ -1,3 +1,4 @@
+import React from 'react'
 import Layout from '../components/notesAppLayout'
 import Note from '../components/note'
 import NewNote from '../components/newNote.js'

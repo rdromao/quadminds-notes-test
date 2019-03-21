@@ -1,3 +1,4 @@
+import React from 'react'
 import { Button, Card, CardBody, CardTitle, CardText, CardLink, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 
 class Note extends React.Component {
