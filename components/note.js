@@ -31,7 +31,7 @@ class Note extends React.Component {
     }
 
     async handleEditNote() {
-        await fetch('/notes/'+this.props.note.id, {
+        await fetch('http://localhost:3000/notes/'+this.props.note.id, {
                 method: 'PUT',
                 headers: {
                 'Accept': 'application/json',

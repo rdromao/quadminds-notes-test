@@ -10,17 +10,19 @@ const bodyStyle = {
 }
 
 class Index extends React.Component {
+  static async getInitialProps(){
+    const res = await fetch("http://localhost:3000/notes");
+    const notes = await res.json();
+    return { notes: notes };
+  }
     constructor(props) {
         super(props);
-        this.state = {notes: [], loadingNotes: true}
+        this.state = {notes: props.notes, loadingNotes: false}
         this.getNotesList = this.getNotesList.bind(this)
         this.deleteNote = this.deleteNote.bind(this)
     }
-  componentWillMount() {
-    this.getNotesList()
-  }
   async deleteNote(noteToDeleteId) {
-    await fetch('/notes/'+noteToDeleteId, {
+    await fetch('http://localhost:3000/notes/'+noteToDeleteId, {
             method: 'DELETE',
             headers: {
             'Accept': 'application/json',
@@ -31,7 +33,7 @@ class Index extends React.Component {
   }
   async getNotesList() {
     this.setState({ loadingNotes: true })
-    const res = await fetch('/notes')
+    const res = await fetch('http://localhost:3000/notes')
     const notes = await res.json()
     this.setState({ notes: notes })
     this.setState({ loadingNotes: false })
