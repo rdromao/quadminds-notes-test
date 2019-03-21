@@ -2,7 +2,7 @@
 
 Este proyecto consiste en la creación de una aplicación (frontend y backend) desarrollada en `reactjs` que permite al usuario listar, crear, eliminar y editar **Notas**.
 
-![Quadminds Notes Test - by @rdromao](https://i.imgur.com/oTsXVWX.png)
+![Quadminds Notes Test - by @rdromao](https://media.giphy.com/media/uUTC71noJrI2axMr0P/giphy.gif)
 
 Cada **nota** está compuesta por dos campos: título y contenido.
 
